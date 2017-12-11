@@ -22,7 +22,7 @@ curl http://localhost/api/data/cliente/1
 curl http://localhost/api/poc/primeiro
 ```
 
-OBS: O Comando primeiro estará sujeito a disponibilidade do Ribbon.
+OPA: Subir todas aplicações leva um tempo. O Comando "primeiro" estará sujeito a disponibilidade do Ribbon.
 
 # Tecnologias
 1. Postgres 10.1 (docker)
