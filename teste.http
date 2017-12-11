@@ -1,0 +1,62 @@
+### Adicionar um cliente
+POST http://localhost:9090/cliente
+Content-Type:application/json
+
+{
+"nome" : "Davi"
+}
+
+### Trazer o cliente adicionado
+GET http://localhost:9090/cliente/1
+
+### Primeiro
+GET http://localhost:9191/primeiro
+
+### ZUUL
+GET http://localhost:8080/api/poc/primeiro
+
+### ZUUL Adicionar um cliente
+POST http://localhost:8080/api/poc-data/cliente
+Content-Type:application/json
+
+{
+"nome" : "Zuul"
+}
+
+### ZUUL Pegar o segundo cliente
+GET http://localhost:8080/api/poc-data/cliente/2
+
+#====================================================
+#### COMPOSER
+#====================================================
+
+### Adicionar um cliente
+POST http://localhost/api/data/cliente
+Content-Type:application/json
+
+{
+"nome" : "Zuul"
+}
+
+### GET
+GET http://localhost/api/poc/primeiro
+
+### GET
+GET http://localhost/api/data/cliente/1
+
+###
+
+
+# DOCKER
+# sudo docker build -t my-java-app .
+# sudo docker tag my-java-app frkr/eureka
+# sudo docker run -it --rm --name my-running-app my-java-app
+# 0.0.0.0:80->8080/tcp
+# 9191/tcp
+# 9090/tcp
+# 8761/tcp
+# 5432/tcp
+
+
+
+

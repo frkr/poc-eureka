@@ -1,0 +1,30 @@
+version: '2'
+services:
+  poc-postgres:
+    image: postgres:10.1-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: poc
+      POSTGRES_PASSWORD: poc
+      POSTGRES_DB: poc
+  poc-eureka:
+    image: springcloud/eureka
+    restart: always
+  poc-data:
+    image: poc-data
+    restart: always
+    depends_on:
+      - poc-postgres
+      - poc-eureka
+  poc-client:
+    image: poc-client
+    restart: always
+    depends_on:
+      - poc-data
+  poc-zuul:
+    image: poc-zuul
+    restart: always
+    depends_on:
+      - poc-client
+    ports:
+      - 80:8080
