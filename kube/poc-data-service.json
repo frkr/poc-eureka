@@ -1,0 +1,30 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "poc-data",
+    "creationTimestamp": null,
+    "labels": {
+      "io.kompose.service": "poc-data"
+    },
+    "annotations": {
+      "kompose.cmd": "kompose convert -j",
+      "kompose.version": "1.6.0 (e4adfef)"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "9090",
+        "port": 9090,
+        "targetPort": 9090
+      }
+    ],
+    "selector": {
+      "io.kompose.service": "poc-data"
+    }
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}

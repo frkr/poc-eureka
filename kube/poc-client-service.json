@@ -1,0 +1,30 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "poc-client",
+    "creationTimestamp": null,
+    "labels": {
+      "io.kompose.service": "poc-client"
+    },
+    "annotations": {
+      "kompose.cmd": "kompose convert -j",
+      "kompose.version": "1.6.0 (e4adfef)"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "9191",
+        "port": 9191,
+        "targetPort": 9191
+      }
+    ],
+    "selector": {
+      "io.kompose.service": "poc-client"
+    }
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}

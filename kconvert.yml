@@ -3,22 +3,25 @@ services:
   poc-postgres:
     image: postgres:10.1-alpine
     restart: always
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_USER: poc
       POSTGRES_PASSWORD: poc
       POSTGRES_DB: poc
-  poc-eureka:
-    image: frkr/eureka-alpine
-    restart: always
   poc-data:
     image: frkr/poc-data
     restart: always
+    ports:
+      - 9090:9090
     depends_on:
       - poc-postgres
       - poc-eureka
   poc-client:
     image: frkr/poc-client
     restart: always
+    ports:
+      - 9191:9191
     depends_on:
       - poc-data
   poc-zuul:
@@ -27,4 +30,4 @@ services:
     depends_on:
       - poc-client
     ports:
-      - 80:8080
+      - 8888:8080

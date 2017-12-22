@@ -1,0 +1,57 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "poc-postgres",
+    "creationTimestamp": null,
+    "labels": {
+      "io.kompose.service": "poc-postgres"
+    },
+    "annotations": {
+      "kompose.cmd": "kompose convert -j",
+      "kompose.version": "1.6.0 (e4adfef)"
+    }
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "io.kompose.service": "poc-postgres"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "poc-postgres",
+            "image": "postgres:10.1-alpine",
+            "ports": [
+              {
+                "containerPort": 5432
+              }
+            ],
+            "env": [
+              {
+                "name": "POSTGRES_DB",
+                "value": "poc"
+              },
+              {
+                "name": "POSTGRES_PASSWORD",
+                "value": "poc"
+              },
+              {
+                "name": "POSTGRES_USER",
+                "value": "poc"
+              }
+            ],
+            "resources": {}
+          }
+        ],
+        "restartPolicy": "Always"
+      }
+    },
+    "strategy": {}
+  },
+  "status": {}
+}
