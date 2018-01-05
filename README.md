@@ -22,6 +22,25 @@ curl http://localhost/api/data/cliente/1
 curl http://localhost/api/poc/primeiro
 ```
 
+No kubernets:
+```bash
+kompose -f kube.yml up
+
+# nao funcionou no AWS
+kubectl expose deployment poc-zuul --type=LoadBalancer --name=balancer --port=8888 --target-port=8888
+
+
+# internal
+curl -i -X POST -H "Content-Type:application/json" -d "{  \"nome\" : \"Zuul\" }" http://10.43.92.245:8888/api/data/cliente
+
+# external
+curl -i -X POST -H "Content-Type:application/json" -d "{  \"nome\" : \"Zuul\" }" http://54.208.58.238:8888/api/data/cliente
+
+
+#curl http://54.85.148.141:8888/api/data/cliente/1
+#curl http://54.85.148.141:8888/api/poc/primeiro
+```
+
 OPA: Subir todas aplicações leva um tempo. O Comando "primeiro" estará sujeito a disponibilidade do Ribbon.
 
 # Tecnologias

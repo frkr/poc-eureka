@@ -20,8 +20,8 @@ public class Application {
             try {
                 System.out.println(5432);
                 new Socket("poc-postgres", 5432);
-                System.out.println(8761);
-                new Socket("poc-eureka", 8761);
+                //System.out.println(8761);
+                //new Socket("poc-eureka", 8761);
                 return;
             } catch (Exception e) {
                 System.out.println("Connect failed, waiting and trying again");
